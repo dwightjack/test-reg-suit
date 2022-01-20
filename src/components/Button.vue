@@ -69,7 +69,7 @@ export default defineComponent({
   background-color: #1ea7fd;
 }
 .storybook-button--secondary {
-  color: red;
+  color: #333;
   background-color: transparent;
   box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 0px 1px inset;
 }
