@@ -74,8 +74,8 @@ export default defineComponent({
   box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 0px 1px inset;
 }
 .storybook-button--small {
-  font-size: 16px;
-  padding: 10px 6px;
+  font-size: 14px;
+  padding: 10px 16px;
 }
 .storybook-button--medium {
   font-size: 14px;
