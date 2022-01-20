@@ -10,7 +10,7 @@ on:
 jobs:
   reg_suit:
     name: Run visual regression tests
-    if: ${{ (github.event.issue.pull_request && contains(github.event.comment.body, '/visualtest')) || github.ref_name == 'main' }}
+    if: ${{ (github.event.issue.pull_request && contains(github.event.comment.body, '/visualtest')) || (github.event_name == 'push' && github.ref_name == 'main') }}
     runs-on: ubuntu-latest
     env:
       REG_SUIT_CLIENT_ID: ${{ secrets.REG_SUIT_CLIENT_ID }}
