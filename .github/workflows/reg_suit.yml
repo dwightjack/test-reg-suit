@@ -13,6 +13,8 @@ jobs:
       REG_SUIT_CLIENT_ID: ${{ secrets.REG_SUIT_CLIENT_ID }}
     steps:
     - uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
     - name: Checkout Pull Request
       # See https://github.com/actions/checkout/issues/331
       run: hub pr checkout ${{ github.event.issue.number }}
