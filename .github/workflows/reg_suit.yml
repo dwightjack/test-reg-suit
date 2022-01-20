@@ -1,0 +1,47 @@
+name: reg_suit
+
+on:
+  push:
+    branches:
+      - 'main'
+  issue_comment:
+    types: [created, edited]
+
+jobs:
+  reg_suit:
+    name: Run visual regression tests
+    if: ${{ (github.event.issue.pull_request && contains(github.event.comment.body, '/visualtest')) || github.ref_name == 'main' }}
+    runs-on: ubuntu-latest
+    env:
+      REG_SUIT_CLIENT_ID: ${{ secrets.REG_SUIT_CLIENT_ID }}
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+    - name: Checkout Pull Request
+      if: ${{ github.event.issue.pull_request }}
+      # See https://github.com/actions/checkout/issues/331
+      run: hub pr checkout ${{ github.event.issue.number }}
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: Workaround for detached HEAD
+      if: ${{ github.ref_name == 'main' }}
+      run: |
+        git checkout ${GITHUB_REF#refs/heads/} || git checkout -b ${GITHUB_REF#refs/heads/} && git pull
+    - name: Use Node.js v10
+      uses: actions/setup-node@v2
+      with:
+        node-version: "14.17.6"
+        cache: 'npm'
+    - name: Authenticate to Google Cloud
+      uses: google-github-actions/auth@v0
+      with:
+        credentials_json: ${{ secrets.GOOGLE_SERVICE_ACCOUNT }}
+    - name: Install dependencies
+      run: npm ci
+    - name: Build storybook
+      run: npm run build-storybook
+    - name: Capture stories
+      run: npm run storycap
+    - name: Run visual regression tests
+      run: npx reg-suit run

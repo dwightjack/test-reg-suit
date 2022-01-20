@@ -1,0 +1,34 @@
+{
+  "name": "test-reg-suit",
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook -o dist-storybook",
+    "storycap": "storycap --serverCmd \"npx http-server dist-storybook -p 9001\" http://localhost:9001"
+  },
+  "dependencies": {
+    "vue": "^3.2.25"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.16.10",
+    "@storybook/addon-actions": "^6.4.13",
+    "@storybook/addon-essentials": "^6.4.13",
+    "@storybook/addon-links": "^6.4.13",
+    "@storybook/vue3": "^6.4.13",
+    "@vitejs/plugin-vue": "^2.0.0",
+    "babel-loader": "^8.2.3",
+    "http-server": "14.1.0",
+    "reg-keygen-git-hash-plugin": "^0.11.1",
+    "reg-notify-github-plugin": "^0.11.1",
+    "reg-publish-gcs-plugin": "^0.11.1",
+    "reg-suit": "0.11.1",
+    "storycap": "3.1.0",
+    "typescript": "^4.4.4",
+    "vite": "^2.7.2",
+    "vue-loader": "^16.8.3",
+    "vue-tsc": "^0.29.8"
+  }
+}
