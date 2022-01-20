@@ -21,7 +21,9 @@ jobs:
     - name: Checkout Pull Request
       if: ${{ github.event.issue.pull_request }}
       # See https://github.com/actions/checkout/issues/331
-      run: hub pr checkout ${{ github.event.issue.number }}
+      run: |
+        hub pr checkout ${{ github.event.issue.number }}
+        git pull
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     - name: Workaround for detached HEAD
