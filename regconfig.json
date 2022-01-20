@@ -2,7 +2,7 @@
   "core": {
     "workingDir": ".reg",
     "actualDir": "__screenshots__",
-    "thresholdPixel": 5,
+    "thresholdRate": 0,
     "enableAntialias": true,
     "addIgnore": true,
     "ximgdiff": {
