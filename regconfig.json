@@ -2,7 +2,8 @@
   "core": {
     "workingDir": ".reg",
     "actualDir": "__screenshots__",
-    "thresholdRate": 0.2,
+    "thresholdPixel": 5,
+    "enableAntialias": true,
     "addIgnore": true,
     "ximgdiff": {
       "invocationType": "client"
