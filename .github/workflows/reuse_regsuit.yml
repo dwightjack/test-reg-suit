@@ -1,0 +1,21 @@
+on:
+  workflow_call:
+    inputs:
+      package:
+        required: true
+        type: string
+jobs:
+  capture:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Build storybook for  ${{ inputs.package }}
+        run: npx --no-install build-storybook -c ./packages/${{ inputs.package }}/.storybook -o packages/${{ inputs.package }}/dist-storybook
+      - name: Capture components screenshots for ${{ inputs.package }}
+        run: |
+          npx --no-install storycap \
+          --serverCmd "http-server ./packages/${{ inputs.package }}/dist-storybook -s -p 9020" \
+          http://localhost:9020
+      - name: Run visual regression
+        run: |
+          "cd ./packages/${{ inputs.package }}"
+          "../../../node_modules/.bin/reg-suit run -c ./regconfig.json",

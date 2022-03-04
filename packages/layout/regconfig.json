@@ -18,7 +18,8 @@
       "setCommitStatus": false
     },
     "reg-publish-gcs-plugin": {
-      "bucketName": "reg-suit-111"
+      "bucketName": "reg-suit-111",
+      "pathPrefix": "layout"
     }
   }
 }

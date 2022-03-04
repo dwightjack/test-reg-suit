@@ -5,9 +5,8 @@
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
     "preview": "vite preview",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook -o dist-storybook",
-    "storycap": "storycap --serverCmd \"npx http-server dist-storybook -p 9001\" http://localhost:9001"
+    "storybook:core": "start-storybook -p 6006 -c ./packages/core/.storybook",
+    "storybook:layout": "start-storybook -p 6007 -c ./packages/layout/.storybook"
   },
   "dependencies": {
     "vue": "^3.2.25"
@@ -18,6 +17,7 @@
     "@storybook/addon-essentials": "^6.4.13",
     "@storybook/addon-links": "^6.4.13",
     "@storybook/vue3": "^6.4.13",
+    "@types/react": "file:stub/types__react",
     "@vitejs/plugin-vue": "^2.0.0",
     "babel-loader": "^8.2.3",
     "http-server": "14.1.0",
