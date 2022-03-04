@@ -8,6 +8,9 @@ inputs:
 runs:
   using: "composite"
   steps:
+    - uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
     - name: Build storybook for  ${{ inputs.package }}
       shell: bash
       run: npx --no-install build-storybook -c ./packages/${{ inputs.package }}/.storybook -o packages/${{ inputs.package }}/dist-storybook
