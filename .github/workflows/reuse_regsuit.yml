@@ -14,6 +14,7 @@ jobs:
         run: |
           npx --no-install storycap \
           --serverCmd "http-server ./packages/${{ inputs.package }}/dist-storybook -s -p 9020" \
+          --outDir ./packages/${{ inputs.package }}/__screenshots__ \
           http://localhost:9020
       - name: Run visual regression
         run: |
