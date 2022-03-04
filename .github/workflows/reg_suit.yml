@@ -41,11 +41,5 @@ jobs:
         credentials_json: ${{ secrets.GOOGLE_SERVICE_ACCOUNT }}
     - name: Install dependencies
       run: npm ci
-    - name: Visual regression for core
-      uses: ./.github/actions/reg_suit
-      with:
-        package: core
-    - name: Visual regression for layout
-      uses: ./.github/actions/reg_suit
-      with:
-        package: layout
+    - name: Run visual regression test
+      run: bash ./scripts/regsuit.sh
