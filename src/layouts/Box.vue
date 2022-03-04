@@ -12,7 +12,7 @@ export default defineComponent({});
 <style scoped>
 .box {
   background: #ccc;
-  width: 200px;
+  width: 250px;
   aspect-ratio: 1;
 }
 </style>
