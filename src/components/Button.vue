@@ -75,7 +75,7 @@ export default defineComponent({
 }
 .storybook-button--small {
   font-size: 14px;
-  padding: 10px 26px;
+  padding: 10px 16px;
 }
 .storybook-button--medium {
   font-size: 14px;
