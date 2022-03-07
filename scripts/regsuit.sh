@@ -6,8 +6,7 @@ do
   echo "- Building Storybook..."
   npx --no-install build-storybook -c ./packages/$PACKAGE/.storybook -o ./packages/$PACKAGE/dist-storybook --quiet || exit 1; 
   echo "- Grab screenshots..." 
-  npx --no-install storycap --serverCmd "http-server ./packages/$PACKAGE/dist-storybook -s -p 9020" --outDir ./packages/$PACKAGE/__screenshots__ http://localhost:9020  || exit 1; 
-  cd ./packages/$PACKAGE
-  node ../../node_modules/.bin/reg-suit run -c ./regconfig.json 
-  cd -
+  npx --no-install storycap --serverCmd "http-server ./packages/$PACKAGE/dist-storybook -s -p 9020" --outDir ./__screenshots__/$PACKAGE http://localhost:9020  || exit 1; 
 done
+echo "- Run visual regression tests..."
+npx --no-install reg-suit run -c ./regconfig.json 
